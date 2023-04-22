@@ -1,4 +1,4 @@
-import ComponentStructure from "../types";
+import type ComponentStructure from "../types";
 
 abstract class Component implements ComponentStructure {
   domElement: HTMLElement;
@@ -6,7 +6,7 @@ abstract class Component implements ComponentStructure {
   constructor(
     private readonly parentElement: HTMLElement,
     className: string,
-    tag = "div"
+    tag: string
   ) {
     this.domElement = document.createElement(tag);
     this.domElement.className = className;
