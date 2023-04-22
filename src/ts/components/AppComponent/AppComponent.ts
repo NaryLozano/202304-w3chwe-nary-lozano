@@ -1,4 +1,5 @@
 import Component from "../Component/Component.js";
+import PokemonListComponent from "../PokemonListComponent/PokemonListComponent.js";
 
 class AppComponent extends Component {
   constructor(parentElement: HTMLElement) {
@@ -19,6 +20,10 @@ class AppComponent extends Component {
       </nav>
     </header>
     <main class = "main"></main>`;
+
+    const mainContainer: HTMLElement = this.domElement.querySelector(".main")!;
+
+    new PokemonListComponent(mainContainer);
   }
 }
 export default AppComponent;
