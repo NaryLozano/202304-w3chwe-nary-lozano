@@ -1,11 +1,13 @@
 import Component from "../Component/Component.js";
+import PokeCardComponent from "../PokeCardComponent/PokeCardComponent.js";
 
-import type Pokemon from "./types";
+import { type Pokemon } from "./types";
+import { type PokemonData } from "./types";
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
 class PokemonListComponent extends Component {
-  private pokeData: Pokemon[] = [];
+  private pokemons: Pokemon[] = [];
 
   constructor(parentElement: HTMLElement) {
     super(parentElement, "poke-list", "ul");
@@ -15,13 +17,17 @@ class PokemonListComponent extends Component {
 
   async getPokemons(): Promise<void> {
     const response = await fetch(apiUrl);
-    const pokemons = (await response.json()) as Pokemon[];
+    const pokeData = (await response.json()) as PokemonData;
 
-    this.pokeData = pokemons;
+    this.pokemons = pokeData.results;
     this.renderHtml();
   }
 
-  renderHtml(): void {}
+  renderHtml(): void {
+    this.pokemons.forEach((pokemon) => {
+      new PokeCardComponent(this.domElement, pokemon.url);
+    });
+  }
 }
 
 export default PokemonListComponent;

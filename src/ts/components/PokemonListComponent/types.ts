@@ -1,6 +1,8 @@
-interface Pokemon {
+export interface Pokemon {
   name: string;
   url: string;
 }
 
-export default Pokemon;
+export interface PokemonData {
+  results: Pokemon[];
+}
