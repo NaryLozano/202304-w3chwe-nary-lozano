@@ -55,3 +55,16 @@ a {
 .navbar__item {
   margin: 1.5rem;
 }
+
+.poke-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+.poke-card {
+  margin-top: 1rem;
+}
+.poke-card__data-container {
+  font-family: "VT323", monospace;
+}

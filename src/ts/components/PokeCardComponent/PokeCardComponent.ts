@@ -9,7 +9,7 @@ class PokeCardComponent extends Component {
   renderHtml(): void {
     this.domElement.innerHTML = `
     <div class = "poke-card__image">
-      <img src="" alt="" />
+      <img src="https://seeklogo.com/images/P/pikachu-logo-619ACB690E-seeklogo.com.png" alt="" />
     </div>
     <div class = "poke-card__data-container">
       <h2 class = "poke-card__name">miau</h2>
