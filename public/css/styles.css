@@ -22,6 +22,8 @@ li {
 button {
   font-family: inherit;
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
 h1,
@@ -74,4 +76,16 @@ a {
 
 .poke-card__image {
   max-width: 18rem;
+}
+
+.button-pagination {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2rem;
+}
+
+.button-pagination__btn {
+  font-family: "DotGothic16", sans-serif;
+  color: #000;
 }

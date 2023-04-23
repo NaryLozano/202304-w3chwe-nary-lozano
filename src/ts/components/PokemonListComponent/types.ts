@@ -5,4 +5,6 @@ export interface Pokemon {
 
 export interface PokemonData {
   results: Pokemon[];
+  next: string;
+  previous: string;
 }
