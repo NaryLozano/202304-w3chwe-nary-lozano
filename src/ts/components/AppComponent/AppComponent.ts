@@ -1,4 +1,6 @@
+import ButtonPaginationComponent from "../ButtonPaginationComponent/ButtonPaginationComponent.js";
 import Component from "../Component/Component.js";
+import HeaderComponent from "../HeaderComponent/HeaderComponent.js";
 import PokemonListComponent from "../PokemonListComponent/PokemonListComponent.js";
 
 class AppComponent extends Component {
@@ -9,21 +11,20 @@ class AppComponent extends Component {
   }
 
   renderHtml(): void {
-    this.domElement.innerHTML = `
-    <header class = "main-header">
-    <img src="./images/pokemon-logo.svg" alt="pokemooon" />
-      <nav class = "navbar">
-        <ul class = navbar__list>
-          <li class = navbar__item><a href="index.html">Home</a></li>
-          <li class = navbar__item><a href="">My Pokemon</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main class = "main"></main>`;
-
-    const mainContainer: HTMLElement = this.domElement.querySelector(".main")!;
-
-    new PokemonListComponent(mainContainer);
+    new HeaderComponent(this.domElement);
+    const pokelist = new PokemonListComponent(this.domElement);
+    const main: HTMLElement = document.querySelector(".container")!;
+    new ButtonPaginationComponent(main);
+    const nextBtn = document.querySelector(".button-pagination__btn--next");
+    nextBtn?.addEventListener("click", () => {
+      pokelist.getNextPage();
+    });
+    const previousBtn = document.querySelector(
+      ".button-pagination__btn--previous"
+    );
+    previousBtn?.addEventListener("click", () => {
+      pokelist.getPreviousPage();
+    });
   }
 }
 export default AppComponent;

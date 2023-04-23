@@ -46,6 +46,7 @@ a {
   border-radius: 30px;
   background-color: #fa757c;
   min-width: fit-content;
+  max-width: inherit;
 }
 
 .navbar__list {
