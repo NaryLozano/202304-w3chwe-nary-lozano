@@ -68,3 +68,10 @@ a {
 .poke-card__data-container {
   font-family: "VT323", monospace;
 }
+.poke-card__image-container {
+  max-width: fit-content;
+}
+
+.poke-card__image {
+  max-width: 18rem;
+}
