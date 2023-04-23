@@ -5,11 +5,11 @@ import PokeCardComponent from "../PokeCardComponent/PokeCardComponent.js";
 import { type Pokemon } from "./types";
 import { type PokemonData } from "./types";
 
-const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
+let apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
 class PokemonListComponent extends Component {
-  public next: string;
-  public previous: string;
+  public next = "";
+  public previous = "";
   private pokemons: Pokemon[] = [];
 
   constructor(parentElement: HTMLElement) {
@@ -19,7 +19,7 @@ class PokemonListComponent extends Component {
   }
 
   async getPokemons(): Promise<void> {
-    const response = await fetch(apiUrl);
+    const response = await fetch(`${apiUrl}`);
     const pokeData = (await response.json()) as PokemonData;
 
     this.pokemons = pokeData.results;
@@ -33,8 +33,20 @@ class PokemonListComponent extends Component {
     this.pokemons.forEach((pokemon) => {
       new PokeCardComponent(this.domElement, pokemon.url);
     });
-    const main: HTMLElement = document.querySelector(".main")!;
-    new ButtonPaginationComponent(main, this.previous, this.next);
+  }
+
+  getNextPage(): void {
+    this.domElement.innerHTML = "";
+    apiUrl = this.next;
+    void this.getPokemons();
+  }
+
+  getPreviousPage(): void {
+    if (this.previous) {
+      this.domElement.innerHTML = "";
+      apiUrl = this.previous;
+      void this.getPokemons();
+    }
   }
 }
 
