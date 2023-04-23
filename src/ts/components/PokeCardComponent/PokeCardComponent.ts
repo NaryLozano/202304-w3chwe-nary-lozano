@@ -29,7 +29,6 @@ class PokeCardComponent extends Component {
       </ul>
     </div>
     `;
-    console.log(this.pokeData.name);
   }
 }
 
