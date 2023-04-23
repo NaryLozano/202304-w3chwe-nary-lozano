@@ -20,7 +20,7 @@ class PokeCardComponent extends Component {
   renderHtml(): void {
     this.domElement.innerHTML = `
     <div class = "poke-card__image-container">
-      <img class = "poke-card__image" src="${this.pokeData.sprites.other["official-artwork"].front_default}" alt="" />
+    <a href="./poke-detail.html"><img class = "poke-card__image" src="${this.pokeData.sprites.other["official-artwork"].front_default}" alt="" /></a>  
     </div>
     <div class = "poke-card__data-container">
       <h2 class = "poke-card__name">${this.pokeData.name}</h2>
